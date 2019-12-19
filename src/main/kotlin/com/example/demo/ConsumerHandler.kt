@@ -1,14 +1,21 @@
 package com.example.demo
 
+import org.apache.commons.logging.LogFactory
 import org.jooq.DSLContext
 import java.nio.charset.StandardCharsets
 
-class ConsumerHandler(private val dsl: DSLContext, val name: String,  private val insertSql: String) {
+class ConsumerHandler(private val dsl: DSLContext,
+                      private val dbInsertEnabled: Boolean,
+                      private val name: String, private val insertSql: String) {
+    private val log = LogFactory.getLog(javaClass)!!
+
     fun handleMessage(bytes: ByteArray) {
         try {
             val message = String(bytes, StandardCharsets.UTF_8)
-            dsl.execute(insertSql, message)
-            println("Queue[${name}] message: $message")
+            if (dbInsertEnabled)
+                dsl.execute(insertSql, message)
+
+            log.info("Queue[${name}] message: $message")
         } catch (e: Exception) {
             e.printStackTrace()
         }

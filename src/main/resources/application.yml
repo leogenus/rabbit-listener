@@ -14,8 +14,12 @@ spring:
     username: appeal
     password: appeal
 
-subscriber.list:
-  - queue: pm_error_que_view
-    insert: "insert into TEMP_TABLE(MESSAGE) values({0})"
-#  - queue: pm_error_que
-#    insert: 11/27/2015
+subscriber:
+  enabled: true
+  list:
+    - queue: pm_error_que_view
+      db-insert-enabled: true
+      insert: "insert into TEMP_TABLE(MESSAGE) values({0})"
+    - queue: pm_error_que
+      db-insert-enabled: false
+      insert: "insert into TEMP_TABLE(MESSAGE) values({0})"

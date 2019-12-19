@@ -9,9 +9,4 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 @ConfigurationProperties(prefix = "subscriber")
 @EnableConfigurationProperties
-class SubscriberConfig(var list: List<Subscriber>) {
-
-    @Bean
-    fun subscriberList(): List<Subscriber> = list
-
-}
+class SubscriberConfig(var enabled: Boolean = false, var list: List<Subscriber> = listOf())
