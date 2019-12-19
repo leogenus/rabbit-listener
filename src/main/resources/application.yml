@@ -1,0 +1,21 @@
+server:
+  port: 8000
+
+spring:
+  rabbitmq:
+    virtual-host: /prosecutor-pmgov
+    host: 172.18.33.156
+    port: 5672
+    username: prosecutor
+    password: "%a8gEgGK"
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@10.0.23.21:1521:gpportal
+    username: appeal
+    password: appeal
+
+subscriber.list:
+  - queue: pm_error_que_view
+    insert: "insert into TEMP_TABLE(MESSAGE) values({0})"
+#  - queue: pm_error_que
+#    insert: 11/27/2015

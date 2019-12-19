@@ -16,6 +16,7 @@ repositories {
 }
 
 dependencies {
+	implementation(fileTree(mapOf("dir" to "lib", "include" to listOf("*.jar"))))
 	implementation("org.springframework.boot:spring-boot-starter-amqp")
 	implementation("org.springframework.boot:spring-boot-starter-jooq")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
