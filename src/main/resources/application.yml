@@ -9,10 +9,10 @@ spring:
     username: prosecutor
     password: "%a8gEgGK"
   datasource:
-    driver-class-name: oracle.jdbc.driver.OracleDriver
-    url: jdbc:oracle:thin:@10.0.23.21:1521:gpportal
-    username: appeal
-    password: appeal
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: password
 
 subscriber:
   enabled: true
